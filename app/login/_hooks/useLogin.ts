@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { AUTH_BASE } from "@/lib/api"
+import { API_BASE } from "@/lib/api"
 import { saveAuth } from "@/lib/auth"
 
 export interface LoginFields {
@@ -19,7 +19,7 @@ export function useLogin() {
     setIsLoading(true)
     setError(null)
     try {
-      const res = await fetch(`${AUTH_BASE}/auth/signin`, {
+      const res = await fetch(`${API_BASE}/auth/signin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(fields),

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ENGINE_BASE, authHeaders } from "@/lib/api"
+import { API_BASE, authHeaders } from "@/lib/api"
 
 export const SENSOR_FIELDS = [
   "altitude",
@@ -108,7 +108,7 @@ export function useNewPrediction() {
     setIsLoading(true)
     setError(null)
     try {
-      const res = await fetch(`${ENGINE_BASE}/predict`, {
+      const res = await fetch(`${API_BASE}/predict`, {
         method: "POST",
         headers: authHeaders(),
         body: JSON.stringify({ engine_id: engineId, sequence }),
