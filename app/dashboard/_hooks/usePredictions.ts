@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { ENGINE_BASE, authHeaders } from "@/lib/api"
+import { API_BASE, authHeaders } from "@/lib/api"
 
 export interface Prediction {
   id: string
@@ -19,7 +19,7 @@ export function usePredictions() {
     setIsLoading(true)
     setError(null)
     try {
-      const res = await fetch(`${ENGINE_BASE}/predictions`, {
+      const res = await fetch(`${API_BASE}/predictions`, {
         headers: authHeaders(),
       })
       if (!res.ok) throw new Error("Error al cargar predicciones")
