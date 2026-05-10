@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { API_BASE } from "@/lib/api"
+import { API_BASE, apiHeaders } from "@/lib/api"
 import { saveAuth } from "@/lib/auth"
 
 export interface RegisterFields {
@@ -27,7 +27,7 @@ export function useRegister() {
     try {
       const res = await fetch(`${API_BASE}/auth/signup`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: apiHeaders(),
         body: JSON.stringify({
           name: fields.name,
           email: fields.email,
