@@ -41,7 +41,8 @@ export function useRegister() {
         )
       }
       saveAuth(data.token, { email: data.email, name: data.name })
-      router.push("/dashboard")
+      router.replace("/dashboard")
+      router.refresh()
     } catch (err) {
       setError(err instanceof Error ? err.message : "No se pudo crear la cuenta. Intenta de nuevo.")
     } finally {
