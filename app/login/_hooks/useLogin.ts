@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { API_BASE } from "@/lib/api"
+import { API_BASE, apiHeaders } from "@/lib/api"
 import { saveAuth } from "@/lib/auth"
 
 export interface LoginFields {
@@ -21,7 +21,7 @@ export function useLogin() {
     try {
       const res = await fetch(`${API_BASE}/auth/signin`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: apiHeaders(),
         body: JSON.stringify(fields),
       })
       const data = await res.json()
