@@ -31,7 +31,8 @@ export function useLogin() {
         )
       }
       saveAuth(data.token, { email: data.email, name: data.name })
-      router.push("/dashboard")
+      router.replace("/dashboard")
+      router.refresh()
     } catch (err) {
       setError(err instanceof Error ? err.message : "Credenciales inválidas. Verifica tu email y contraseña.")
     } finally {
